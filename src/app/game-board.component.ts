@@ -3,31 +3,7 @@ import { GameService } from './gameService';
 
 @Component({
   selector: 'game-board',
-  template: `
-    <div class="row">
-      <div class="col-8">
-        <h2>Player Hands</h2>
-        <div class="card-deck">
-          <div class="card" *ngFor="let card of playerHand">
-            <div class="card-body">
-              <h5 class="card-title">{{card.value}}</h5>
-              <p class="card-text">{{card.suit}}</p>
-              <button class="btn btn-primary" (click)="playCard(card)">Play</button>
-              <button class="btn btn-secondary" (click)="discardCard(card)">Discard</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-4">
-        <h2>Discard Pile</h2>
-        <app-hand [pile]="discardPile"></app-hand>
-      </div>
-    </div>
-    <hr>
-    <h2>Played Cards</h2>
-    <app-hand [pile]="playedCards"></app-hand>
-    <button class="btn btn-primary" (click)="takeDiscard()">Take Discard</button>
-  `,
+  templateUrl: './game-board.html',
 })
 export class GameBoardComponent implements OnInit {
   playerHand: any[] = [];
