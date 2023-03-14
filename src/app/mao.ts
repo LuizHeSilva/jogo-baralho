@@ -4,7 +4,7 @@ import { Component, Input } from '@angular/core';
   selector: 'app-hand',
   template: `
     <div class="card-deck">
-      <div class="card" *ngFor="let card of hand">
+      <div class="card" *ngFor="let card of pile">
         <div class="card-body">
           <h5 class="card-title">{{card.value}}</h5>
           <p class="card-text">{{card.suit}}</p>
@@ -12,8 +12,7 @@ import { Component, Input } from '@angular/core';
       </div>
     </div>
   `,
-  styleUrls: ['./hand.component.css']
 })
 export class HandComponent {
-  @Input() hand: any[] = [];
+  @Input() pile: any[] = [];
 }

@@ -1,19 +1,34 @@
-import { Component, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-discard-pile',
-  template: `
-    <div class="card-deck">
-      <div class="card" *ngFor="let card of pile">
-        <div class="card-body">
-          <h5 class="card-title">{{card.value}}</h5>
-          <p class="card-text">{{card.suit}}</p>
-        </div>
-      </div>
-    </div>
-  `,
-  styleUrls: ['./discard-pile.component.css']
+  selector: 'deck',
+  templateUrl: './deck.component.html',
 })
-export class DiscardPileComponent {
-  @Input() pile: any[] = [];
+export class DeckComponent implements OnInit {
+  deck: any[] = [];
+
+  ngOnInit(): void {
+    const suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades'];
+    const values = [
+      'Ace',
+      '2',
+      '3',
+      '4',
+      '5',
+      '6',
+      '7',
+      '8',
+      '9',
+      '10',
+      'Jack',
+      'Queen',
+      'King',
+    ];
+
+    for (let suit of suits) {
+      for (let value of values) {
+        this.deck.push({ value: value, suit: suit });
+      }
+    }
+  }
 }
