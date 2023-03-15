@@ -1,5 +1,40 @@
 <div class="row">
   <div class="col-8">
+    <h2>Cartas dos jogadores</h2>
+    <div class="card-mao">
+      <div class="card" *ngFor="let carta of playerHand">
+        <div class="card-body">
+          <img src="https://deckofcardsapi.com/static/img/{{carta.value}}{{carta.suit.sigla}}.png">
+
+          <button class="btn btn-primary" (click)="jogarCarta(carta)">Jogar</button>
+          <button class="btn btn-secondary" (click)="descartar(carta)">Descartar</button>
+        </div>
+      </div>
+    </div>
+    <app-hand *ngFor="let mao of playerHand; let i = index">
+    </app-hand>
+  </div>
+  <div class="col-4">
+    <div class="col-4">
+      <h2>Discard Pile</h2>
+      <pilha-descarte [pile]="discardPile"></pilha-descarte>
+    </div>
+    <h2>Monte de descarte</h2>
+    <div class="card-deck">
+      <div class="card-empilhada" *ngFor="let carta of gameService.discardPile">
+        <div class="card-body">
+          <img  src="https://deckofcardsapi.com/static/img/{{carta.value}}{{carta.suit.sigla}}.png">
+        </div>
+      </div>
+    </div>
+    <button (click)="pegarDescarte()">Pegar do monte de descarte</button>
+  </div>
+</div>
+
+
+
+<!-- <div class="row">
+  <div class="col-8">
     <h2>Player Hands</h2>
     <div class="card-deck">
       <div class="card" *ngFor="let card of playerHand">
@@ -16,10 +51,10 @@
   </div>
   <div class="col-4">
     <h2>Discard Pile</h2>
-    <app-hand [pile]="discardPile"></app-hand>
+    <pilha-descarte [pile]="discardPile"></pilha-descarte>
   </div>
 </div>
 <hr />
 <h2>Played Cards</h2>
 <app-hand [pile]="playedCards"></app-hand>
-<button class="btn btn-primary" (click)="takeDiscard()">Take Discard</button>
+<button class="btn btn-primary" (click)="takeDiscard()">Take Discard</button> -->

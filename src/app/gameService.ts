@@ -11,8 +11,9 @@ export class GameService {
   startGame(numPlayers: number) {
     // create deck of cards
     const deck = [];
-    const suits = ['Hearts', 'Diamonds', 'Spades', 'Clubs'];
-    const values = ['Ace', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King'];
+    const suits = [{nipe: 'Copas', sigla: 'H'}, {nipe: 'Ouro', sigla: 'D'},
+    {nipe: 'Espada', sigla: 'S'}, {nipe: 'Paus', sigla: 'C'}];
+    const values = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'J', 'Q', 'K'];
     for (const suit of suits) {
       for (const value of values) {
         deck.push({ suit, value });
