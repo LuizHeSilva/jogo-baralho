@@ -1,56 +1,20 @@
 <div class="row">
   <div>
     <h2>Cartas dos jogadores</h2>
-    <div class="card-mao">
-      <div class="card" *ngFor="let carta of maoJogador">
-        <div class="card-body">
-          <img
-            src="https://deckofcardsapi.com/static/img/{{carta.value}}{{carta.suit.sigla}}.png"
-          />
-
-          <button class="btn btn-primary" (click)="jogarCarta(carta)">
-            Jogar
-          </button>
-          <button class="btn btn-secondary" (click)="descartar(carta)">
-            Descartar
-          </button>
-        </div>
-      </div>
-    </div>
-    <app-hand *ngFor="let mao of maoJogador; let i = index"> </app-hand>
+    <mao-jogador></mao-jogador>
   </div>
-  <div>
-    <h2>Monte de descarte</h2>
-    <div class="card-deck">
-      <div
-        class="card-empilhada"
-        *ngFor="let carta of gameService.pilhaDescarte"
-      >
-        <div class="card-body">
-          <img
-            src="https://deckofcardsapi.com/static/img/{{carta.value}}{{carta.suit.sigla}}.png"
-          />
-        </div>
-      </div>
+  <div class="row">
+    <div class="col">
+      <h2>Compra</h2>
+      <pilha-compra></pilha-compra>
     </div>
-    <button (click)="pegarDescarte()">Pegar do monte de descarte</button>
-  </div>
-  <div>
-    <h2>Cartas Jogadas</h2>
-    <div class="card-deck">
-      <div
-        class="card-empilhada"
-        *ngFor="let carta of gameService.cartasJogadas"
-      >
-        <div class="card-body">
-          <img
-            src="https://deckofcardsapi.com/static/img/{{carta.value}}{{carta.suit.sigla}}.png"
-          />
-        </div>
-      </div>
+    <div class="col">
+      <h2>Monte de descarte</h2>
+      <pilha-descarte></pilha-descarte>
     </div>
-    <button (click)="pegarCartaJogada()">
-      Pegar do monte de cartas jogadas
-    </button>
+    <div class="col">
+      <h2>Cartas Jogadas</h2>
+      <cartas-jogadas></cartas-jogadas>
+    </div>
   </div>
 </div>

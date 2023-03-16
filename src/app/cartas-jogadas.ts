@@ -2,21 +2,21 @@ import { Component } from '@angular/core';
 import { GameService } from './gameService';
 
 @Component({
-  selector: 'pilha-descarte',
-  templateUrl: './pilha-descarte.html'
+  selector: 'cartas-jogadas',
+  templateUrl: './cartas-jogadas.html'
 })
-export class PilhaDescarteComponent {
+export class CartasJogadasComponent {
 
   constructor(public gameService: GameService) {}
 
   maoJogador: any[] = this.gameService.maoJogador[0];
   cartasJogadas: any[] = this.gameService.cartasJogadas;
-  pilhaDescarte: any[] = this.gameService.pilhaDescarte;
+  pilhaDescarte: any[] = this.gameService.pilhaCompra;
 
-  pegarCartaDescartada() {
-    this.gameService.pegarCartaDescartada(0);
+  pegarCartaJogada() {
+    this.gameService.pegarCartaJogada(0);
     this.maoJogador = this.gameService.maoJogador[0];
-    this.pilhaDescarte = this.gameService.pilhaDescarte;
+    this.cartasJogadas = this.gameService.cartasJogadas;
   }
 
 }

@@ -13,33 +13,10 @@ export class GameBoardComponent implements OnInit {
   constructor(public gameService: GameService) {}
 
   ngOnInit() {
-    this.gameService.startGame(4);
+    this.gameService.startGame(2);
     this.maoJogador = this.gameService.maoJogador[0];
-  }
-
-  jogarCarta(card: any) {
-    const cardIndex = this.maoJogador.indexOf(card);
-    this.gameService.jogarCarta(0, cardIndex);
-    this.maoJogador = this.gameService.maoJogador[0];
+    this.pilhaDescarte = this.gameService.pilhaCompra;
     this.cartasJogadas = this.gameService.cartasJogadas;
   }
 
-  descartar(card: any) {
-    const cardIndex = this.maoJogador.indexOf(card);
-    this.gameService.descartar(0, cardIndex);
-    this.maoJogador = this.gameService.maoJogador[0];
-    this.pilhaDescarte = this.gameService.pilhaDescarte;
-  }
-
-  pegarDescarte() {
-    this.gameService.pegarDescarte(0);
-    this.maoJogador = this.gameService.maoJogador[0];
-    this.pilhaDescarte = this.gameService.pilhaDescarte;
-  }
-
-  pegarCartaJogada() {
-    this.gameService.pegarCartaJogada(0);
-    this.maoJogador = this.gameService.maoJogador[0];
-    this.cartasJogadas = this.gameService.cartasJogadas;
-  }
 }

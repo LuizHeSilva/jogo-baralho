@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class GameService {
   maoJogador: any[][] = [];
+  pilhaCompra: any[] = [];
   pilhaDescarte: any[] = [];
   cartasJogadas: any[] = [];
 
@@ -18,19 +19,7 @@ export class GameService {
       { nipe: 'Paus', sigla: 'C' },
     ];
     const values = [
-      'A',
-      '2',
-      '3',
-      '4',
-      '5',
-      '6',
-      '7',
-      '8',
-      '9',
-      '0',
-      'J',
-      'Q',
-      'K',
+      'A','2', '3', '4', '5', '6', '7', '8', '9', '0', 'J', 'Q', 'K',
     ];
     for (const suit of suits) {
       for (const value of values) {
@@ -46,7 +35,7 @@ export class GameService {
     for (let i = 0; i < numPlayers; i++) {
       this.maoJogador.push(deck.slice(i * 5, (i + 1) * 5));
     }
-    this.pilhaDescarte = deck.slice(numPlayers * 5);
+    this.pilhaCompra = deck.slice(numPlayers * 5);
   }
 
   jogarCarta(playerIndex: number, cartaIndex: number) {
@@ -61,13 +50,18 @@ export class GameService {
     this.maoJogador[playerIndex].splice(cartaIndex, 1);
   }
 
-  pegarDescarte(playerIndex: number) {
-    const carta = this.pilhaDescarte.pop();
+  comprar(playerIndex: number) {
+    const carta = this.pilhaCompra.pop();
     this.maoJogador[playerIndex].push(carta);
   }
 
   pegarCartaJogada(playerIndex: number) {
     const carta = this.cartasJogadas.pop();
+    this.maoJogador[playerIndex].push(carta);
+  }
+
+  pegarCartaDescartada(playerIndex: number) {
+    const carta = this.pilhaDescarte.pop();
     this.maoJogador[playerIndex].push(carta);
   }
 }
