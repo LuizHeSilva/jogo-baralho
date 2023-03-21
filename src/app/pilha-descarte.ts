@@ -3,10 +3,9 @@ import { GameService } from './gameService';
 
 @Component({
   selector: 'pilha-descarte',
-  templateUrl: './pilha-descarte.html'
+  templateUrl: './pilha-descarte.html',
 })
 export class PilhaDescarteComponent {
-
   constructor(public gameService: GameService) {}
 
   maoJogador: any[] = this.gameService.maoJogador[0];
@@ -14,9 +13,10 @@ export class PilhaDescarteComponent {
   pilhaDescarte: any[] = this.gameService.pilhaDescarte;
 
   pegarCartaDescartada() {
-    this.gameService.pegarCartaDescartada(0);
-    this.maoJogador = this.gameService.maoJogador[0];
-    this.pilhaDescarte = this.gameService.pilhaDescarte;
+    if (this.gameService.pilhaDescarte.length > 0) {
+      this.gameService.pegarCartaDescartada(0);
+      this.maoJogador = this.gameService.maoJogador[0];
+      this.pilhaDescarte = this.gameService.pilhaDescarte;
+    }
   }
-
 }

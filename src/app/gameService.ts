@@ -8,6 +8,7 @@ export class GameService {
   pilhaCompra: any[] = [];
   pilhaDescarte: any[] = [];
   cartasJogadas: any[] = [];
+  vira: any = null;
 
   startGame(numPlayers: number) {
     // create deck of cartas
@@ -18,24 +19,23 @@ export class GameService {
       { nipe: 'Espada', sigla: 'S' },
       { nipe: 'Paus', sigla: 'C' },
     ];
-    const values = [
-      'A','2', '3', '4', '5', '6', '7', '8', '9', '0', 'J', 'Q', 'K',
-    ];
+    const values = ['A', '2', '3', '4', '5', '6', '7', 'J', 'Q', 'K'];
     for (const suit of suits) {
       for (const value of values) {
         deck.push({ suit, value });
       }
     }
-    // shuffle deck
+    // embaralhar
     for (let i = deck.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [deck[i], deck[j]] = [deck[j], deck[i]];
     }
-    // deal cartas
+    // cartear
     for (let i = 0; i < numPlayers; i++) {
-      this.maoJogador.push(deck.slice(i * 5, (i + 1) * 5));
+      this.maoJogador.push(deck.slice(i * 3, (i + 1) * 3));
     }
-    this.pilhaCompra = deck.slice(numPlayers * 5);
+    this.vira = deck.pop();
+    this.pilhaCompra = deck.slice(numPlayers * 3);
   }
 
   jogarCarta(playerIndex: number, cartaIndex: number) {

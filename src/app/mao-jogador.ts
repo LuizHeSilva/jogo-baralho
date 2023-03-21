@@ -6,7 +6,6 @@ import { GameService } from './gameService';
   templateUrl: './mao-jogador.html',
 })
 export class MaoJogadorComponent implements OnInit {
-
   constructor(public gameService: GameService) {}
 
   maoJogador: any[] = this.gameService.maoJogador[0];
@@ -30,5 +29,4 @@ export class MaoJogadorComponent implements OnInit {
     this.maoJogador = this.gameService.maoJogador[0];
     this.pilhaDescarte = this.gameService.pilhaCompra;
   }
-
 }

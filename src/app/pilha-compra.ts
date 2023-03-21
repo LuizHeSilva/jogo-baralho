@@ -14,9 +14,11 @@ export class PilhaCompraComponent {
   pilhaDescarte: any[] = this.gameService.pilhaCompra;
 
   comprar() {
-    this.gameService.comprar(0);
-    this.maoJogador = this.gameService.maoJogador[0];
-    this.pilhaDescarte = this.gameService.pilhaCompra;
+    if (this.gameService.pilhaCompra.length > 0) {
+      this.gameService.comprar(0);
+      this.maoJogador = this.gameService.maoJogador[0];
+      this.pilhaDescarte = this.gameService.pilhaCompra;
+    }
   }
 
 }

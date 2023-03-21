@@ -9,14 +9,15 @@ export class GameBoardComponent implements OnInit {
   maoJogador: any[] = [];
   pilhaDescarte: any[] = [];
   cartasJogadas: any[] = [];
+  vira: any = this.gameService.vira;
 
   constructor(public gameService: GameService) {}
 
   ngOnInit() {
-    this.gameService.startGame(2);
+    this.gameService.startGame(1);
     this.maoJogador = this.gameService.maoJogador[0];
     this.pilhaDescarte = this.gameService.pilhaCompra;
     this.cartasJogadas = this.gameService.cartasJogadas;
+    this.vira = this.gameService.vira;
   }
-
 }

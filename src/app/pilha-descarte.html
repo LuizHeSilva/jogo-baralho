@@ -1,8 +1,11 @@
 <div class="card-deck m-lg-5">
   <div class="card-empilhada" *ngFor="let carta of pilhaDescarte">
-  <!-- <div class="card-empilhada"> -->
+    <!-- <div class="card-empilhada"> -->
     <div class="card-body">
-      <img src="https://deckofcardsapi.com/static/img/{{carta.value}}{{carta.suit.sigla}}.png"/>
+      <img
+        class="image"
+        src="https://deckofcardsapi.com/static/img/{{carta.value}}{{carta.suit.sigla}}.png"
+      />
     </div>
   </div>
 </div>
