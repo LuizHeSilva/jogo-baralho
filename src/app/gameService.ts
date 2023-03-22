@@ -10,8 +10,8 @@ export class GameService {
   cartasJogadas: any[] = [];
   vira: any = null;
 
-  startGame(numPlayers: number) {
-    // create deck of cartas
+  inicarJogo(numPlayers: number) {
+    // criando deck
     const deck = [];
     const suits = [
       { nipe: 'Copas', sigla: 'H' },

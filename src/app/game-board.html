@@ -1,12 +1,43 @@
-<div class="row">
-  <div>
-    <h2>Cartas dos jogadores</h2>
-    <mao-jogador></mao-jogador>
-    <br />
-    <h2>Vira</h2>
-    <img
+<div class="table">
+  <div class="table-row">
+    <div class="seat"></div>
+  </div>
+  <div class="table-row">
+    <div class="seat"></div>
+    <!-- MESA, TODAS AS CARTAS JOGADAS DENTRO -->
+    <div class="mesaa">
+      <h2>Vira</h2>
+      <img
         class="image"
-        src="https://deckofcardsapi.com/static/img/{{vira.value}}{{vira.suit.sigla}}.png"
-      />
+        src="https://deckofcardsapi.com/static/img/{{vira.value}}{{vira.suit.sigla}}.png"/>
+      
+      <h4>Descarte</h4>
+      <cartas-jogadas></cartas-jogadas>
+
+      <div class="row alinhar-baixo">
+        <h2>Suas Cartas</h2>
+        <mao-jogador></mao-jogador>
+      </div>
+    </div>
+    <div class="seat"></div>
+  </div>
+  <div class="table-row">
+    <div class="seat"></div>
+  </div>
+</div>
+<!-- fim da mesa -->
+
+<div class="row">
+  <div class="col">
+    <h2>Compra</h2>
+    <pilha-compra></pilha-compra>
+  </div>
+  <div class="col">
+    <h2>Monte de descarte</h2>
+    <pilha-descarte></pilha-descarte>
+  </div>
+  <div class="col">
+    <h2>Cartas Jogadas</h2>
+    <cartas-jogadas></cartas-jogadas>
   </div>
 </div>

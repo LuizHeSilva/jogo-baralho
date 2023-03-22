@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { GameService } from './gameService';
+import { GameService } from './../gameService';
 
 @Component({
   selector: 'pilha-compra',

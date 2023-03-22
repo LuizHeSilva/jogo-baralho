@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { CartasJogadasComponent } from './cartas-jogadas';
+import { CartasJogadasComponent } from './cartas-jogadas/cartas-jogadas';
 import { GameBoardComponent } from './game-board.component';
-import { MaoJogadorComponent } from './mao-jogador';
-import { PilhaCompraComponent } from './pilha-compra';
-import { PilhaDescarteComponent } from './pilha-descarte';
+import { MaoJogadorComponent } from './mao-jogador/mao-jogador';
+import { PilhaCompraComponent } from './pilha-compra/pilha-compra';
+import { PilhaDescarteComponent } from './pilha-descarte/pilha-descarte';
 
 @NgModule({
   declarations: [
@@ -12,7 +12,6 @@ import { PilhaDescarteComponent } from './pilha-descarte';
     MaoJogadorComponent,
     PilhaCompraComponent,
     PilhaDescarteComponent,
-    MaoJogadorComponent,
     CartasJogadasComponent
   ],
   imports: [BrowserModule],
