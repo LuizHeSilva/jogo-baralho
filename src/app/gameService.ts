@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class GameService {
+  maos: any[][] = [];
   maoJogador: any[] = [];
   maoNpc: any[] = [];
   pilhaCompra: any[] = [];
@@ -33,12 +34,12 @@ export class GameService {
     }
     // cartear
     for (let i = 0; i < numPlayers; i++) {
-      if ((i = 0)) {
-        this.maoJogador.push(deck.slice(i * 3, (i + 1) * 3));
-      } else {
-        this.maoNpc.push(deck.slice(i * 3, (i + 1) * 3));
-      }
+      this.maos.push(deck.slice(i * 3, (i + 1) * 3));
     }
+
+    this.maoJogador = this.maos[0];
+    this.maoNpc = this.maos[1];
+
     this.vira = deck.pop();
     this.pilhaCompra = deck.slice(numPlayers * 3);
   }
