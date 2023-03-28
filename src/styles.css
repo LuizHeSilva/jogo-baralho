@@ -137,4 +137,14 @@
 
 .alinhar-baixo {
   align-self: flex-end;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+}
+
+.alinhar-cima {
+  align-self: flex-start;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
 }

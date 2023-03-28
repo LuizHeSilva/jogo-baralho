@@ -4,7 +4,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class GameService {
-  maoJogador: any[][] = [];
+  maoJogador: any[] = [];
+  maoNpc: any[] = [];
   pilhaCompra: any[] = [];
   pilhaDescarte: any[] = [];
   cartasJogadas: any[] = [];
@@ -32,36 +33,45 @@ export class GameService {
     }
     // cartear
     for (let i = 0; i < numPlayers; i++) {
-      this.maoJogador.push(deck.slice(i * 3, (i + 1) * 3));
+      if ((i = 0)) {
+        this.maoJogador.push(deck.slice(i * 3, (i + 1) * 3));
+      } else {
+        this.maoNpc.push(deck.slice(i * 3, (i + 1) * 3));
+      }
     }
     this.vira = deck.pop();
     this.pilhaCompra = deck.slice(numPlayers * 3);
   }
 
   jogarCarta(playerIndex: number, cartaIndex: number) {
-    const carta = this.maoJogador[playerIndex][cartaIndex];
-    this.cartasJogadas.push(carta);
-    this.maoJogador[playerIndex].splice(cartaIndex, 1);
+    // const carta = this.maoJogador[playerIndex][cartaIndex];
+    // this.cartasJogadas.push(carta);
+    // this.maoJogador[playerIndex].splice(cartaIndex, 1);
   }
 
   descartar(playerIndex: number, cartaIndex: number) {
-    const carta = this.maoJogador[playerIndex][cartaIndex];
+    // const carta = this.maoJogador[playerIndex][cartaIndex];
+    const carta = this.maoJogador[cartaIndex];
     this.pilhaDescarte.push(carta);
-    this.maoJogador[playerIndex].splice(cartaIndex, 1);
+    // this.maoJogador[playerIndex].splice(cartaIndex, 1);
+    this.maoJogador.splice(cartaIndex, 1);
   }
 
   comprar(playerIndex: number) {
     const carta = this.pilhaCompra.pop();
-    this.maoJogador[playerIndex].push(carta);
+    // this.maoJogador[playerIndex].push(carta);
+    this.maoJogador.push(carta);
   }
 
   pegarCartaJogada(playerIndex: number) {
     const carta = this.cartasJogadas.pop();
-    this.maoJogador[playerIndex].push(carta);
+    // this.maoJogador[playerIndex].push(carta);
+    this.maoJogador.push(carta);
   }
 
   pegarCartaDescartada(playerIndex: number) {
     const carta = this.pilhaDescarte.pop();
-    this.maoJogador[playerIndex].push(carta);
+    // this.maoJogador[playerIndex].push(carta);
+    this.maoJogador.push(carta);
   }
 }

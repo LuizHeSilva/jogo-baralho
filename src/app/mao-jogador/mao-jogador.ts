@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { GameService } from './../gameService';
 
 @Component({
@@ -6,14 +6,17 @@ import { GameService } from './../gameService';
   templateUrl: './mao-jogador.html',
 })
 export class MaoJogadorComponent implements OnInit {
+  @Input() isNpc: boolean = false;
+
   constructor(public gameService: GameService) {}
 
-  maoJogador: any[] = this.gameService.maoJogador[0];
+  maoJogador: any[] = this.gameService.maoJogador;
+  maoNPC: any[] = this.gameService.maoNpc;
   cartasJogadas: any[] = this.gameService.cartasJogadas;
   pilhaDescarte: any[] = this.gameService.pilhaCompra;
 
   ngOnInit(): void {
-    console.log(this.maoJogador);
+    console.log(this.gameService.maoJogador);
   }
 
   jogarCarta(card: any) {
