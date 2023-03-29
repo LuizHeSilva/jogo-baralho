@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CartasJogadasComponent } from './cartas-jogadas/cartas-jogadas';
 import { GameBoardComponent } from './game-board.component';
 import { MaoJogadorComponent } from './mao-jogador/mao-jogador';
+import { MaoNpcComponent } from './mao-npc/mao-npc';
 import { PilhaCompraComponent } from './pilha-compra/pilha-compra';
 import { PilhaDescarteComponent } from './pilha-descarte/pilha-descarte';
 
@@ -10,9 +11,10 @@ import { PilhaDescarteComponent } from './pilha-descarte/pilha-descarte';
   declarations: [
     GameBoardComponent,
     MaoJogadorComponent,
+    MaoNpcComponent,
     PilhaCompraComponent,
     PilhaDescarteComponent,
-    CartasJogadasComponent
+    CartasJogadasComponent,
   ],
   imports: [BrowserModule],
   providers: [],
@@ -22,7 +24,8 @@ import { PilhaDescarteComponent } from './pilha-descarte/pilha-descarte';
     PilhaCompraComponent,
     PilhaDescarteComponent,
     MaoJogadorComponent,
-    CartasJogadasComponent
+    CartasJogadasComponent,
+    MaoNpcComponent,
   ],
 })
 export class AppModule {}

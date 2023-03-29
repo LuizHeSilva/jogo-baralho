@@ -7,6 +7,7 @@ import { GameService } from './gameService';
 })
 export class GameBoardComponent implements OnInit {
   maoJogador: any[] = [];
+  maoNpc: any[] = [];
   pilhaDescarte: any[] = [];
   cartasJogadas: any[] = [];
   vira: any = this.gameService.vira;
@@ -15,7 +16,8 @@ export class GameBoardComponent implements OnInit {
 
   ngOnInit() {
     this.gameService.inicarJogo(2);
-    this.maoJogador = this.gameService.maoJogador[0];
+    this.maoJogador = this.gameService.maoJogador;
+    this.maoNpc = this.gameService.maoNpc;
     this.pilhaDescarte = this.gameService.pilhaCompra;
     this.cartasJogadas = this.gameService.cartasJogadas;
     this.vira = this.gameService.vira;

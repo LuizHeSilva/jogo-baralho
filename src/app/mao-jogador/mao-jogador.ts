@@ -1,31 +1,16 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { GameService } from './../gameService';
 
 @Component({
   selector: 'mao-jogador',
   templateUrl: './mao-jogador.html',
 })
-export class MaoJogadorComponent implements OnInit {
-  @Input() teste = true;
-
-  constructor(public gameService: GameService) {}
-
-  cartas: any[] = [];
+export class MaoJogadorComponent {
   maoJogador: any[] = this.gameService.maoJogador;
-  maoNPC: any[] = this.gameService.maoNpc;
   cartasJogadas: any[] = this.gameService.cartasJogadas;
   pilhaDescarte: any[] = this.gameService.pilhaCompra;
 
-  ngOnInit(): void {
-    console.log(this.teste);
-    if (this.teste) {
-      this.cartas = this.maoJogador;
-    } else {
-      this.cartas = this.maoNPC;
-    }
-
-    console.log(this.gameService.maos);
-  }
+  constructor(public gameService: GameService) {}
 
   jogarCarta(card: any) {
     const cardIndex = this.maoJogador.indexOf(card);
