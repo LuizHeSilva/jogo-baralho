@@ -3,17 +3,17 @@ import { GameService } from './../gameService';
 
 @Component({
   selector: 'mao-npc',
-  template: `aqui era praestar meu html`,
+  templateUrl: './mao-npc.html',
 })
 export class MaoNpcComponent implements OnInit {
   maoNpc: any[] = this.gameService.maoNpc;
   cartasJogadas: any[] = this.gameService.cartasJogadas;
-  pilhaDescarte: any[] = this.gameService.pilhaCompra;
+  pilhaDescarte: any[] = this.gameService.pilhaDescarte;
 
   constructor(public gameService: GameService) {}
 
   ngOnInit(): void {
-    console.log(this.gameService.maoNpc);
+    console.log('oi: ', this.gameService.maoNpc);
   }
 
   jogarCarta(card: any) {
@@ -24,9 +24,10 @@ export class MaoNpcComponent implements OnInit {
   }
 
   descartar(card: any) {
-    const cardIndex = this.maoNpc.indexOf(card);
-    this.gameService.descartar(1, cardIndex);
+    console.log(this.maoNpc);
+    const cardIndex = this.gameService.maoNpc.indexOf(card);
+    this.gameService.descartar2(cardIndex, true);
     this.maoNpc = this.gameService.maoNpc;
-    this.pilhaDescarte = this.gameService.pilhaCompra;
+    this.pilhaDescarte = this.gameService.pilhaDescarte;
   }
 }

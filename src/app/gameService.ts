@@ -50,12 +50,26 @@ export class GameService {
     // this.maoJogador[playerIndex].splice(cartaIndex, 1);
   }
 
-  descartar(playerIndex: number, cartaIndex: number) {
-    // const carta = this.maoJogador[playerIndex][cartaIndex];
-    const carta = this.maoJogador[cartaIndex];
+  descartar(cartaIndex: number, isNpc: boolean) {
+    let carta;
+    console.log(cartaIndex);
+    if (isNpc) {
+      carta = this.maoNpc[cartaIndex];
+      console.log(this.maoNpc);
+      this.maoNpc.splice(cartaIndex, 1);
+    } else {
+      carta = this.maoJogador[cartaIndex];
+      this.maoJogador.splice(cartaIndex, 1);
+    }
+    console.log(carta);
     this.pilhaDescarte.push(carta);
-    // this.maoJogador[playerIndex].splice(cartaIndex, 1);
-    this.maoJogador.splice(cartaIndex, 1);
+  }
+
+  descartar2(cartaIndex: number, isNpc: boolean) {
+    let carta;
+    carta = this.maoNpc[cartaIndex];
+    this.maoNpc.splice(cartaIndex, 1);
+    this.pilhaDescarte.push(carta);
   }
 
   comprar(playerIndex: number) {

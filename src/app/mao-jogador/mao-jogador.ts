@@ -8,7 +8,7 @@ import { GameService } from './../gameService';
 export class MaoJogadorComponent {
   maoJogador: any[] = this.gameService.maoJogador;
   cartasJogadas: any[] = this.gameService.cartasJogadas;
-  pilhaDescarte: any[] = this.gameService.pilhaCompra;
+  pilhaDescarte: any[] = this.gameService.pilhaDescarte;
 
   constructor(public gameService: GameService) {}
 
@@ -21,8 +21,8 @@ export class MaoJogadorComponent {
 
   descartar(card: any) {
     const cardIndex = this.maoJogador.indexOf(card);
-    this.gameService.descartar(0, cardIndex);
+    this.gameService.descartar(cardIndex, false);
     this.maoJogador = this.gameService.maoJogador;
-    this.pilhaDescarte = this.gameService.pilhaCompra;
+    this.pilhaDescarte = this.gameService.pilhaDescarte;
   }
 }

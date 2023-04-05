@@ -1,5 +1,5 @@
 <div class="card-deck m-lg-5">
-  <div class="card-empilhada" *ngFor="let carta of pilhaDescarte">
+  <div class="card-empilhada" *ngFor="let carta of gameService.pilhaDescarte">
     <!-- <div class="card-empilhada"> -->
     <div class="card-body">
       <img
@@ -9,4 +9,4 @@
     </div>
   </div>
 </div>
-<button (click)="pegarCartaDescartada()">Pegar do monte de descarte</button>
+<!-- <button (click)="pegarCartaDescartada()">Pegar do monte de descarte</button> -->
