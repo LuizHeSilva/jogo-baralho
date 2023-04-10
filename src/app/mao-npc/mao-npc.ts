@@ -24,9 +24,8 @@ export class MaoNpcComponent implements OnInit {
   }
 
   descartar(card: any) {
-    console.log(this.maoNpc);
     const cardIndex = this.gameService.maoNpc.indexOf(card);
-    this.gameService.descartar2(cardIndex, true);
+    this.gameService.descartar(cardIndex, true);
     this.maoNpc = this.gameService.maoNpc;
     this.pilhaDescarte = this.gameService.pilhaDescarte;
   }

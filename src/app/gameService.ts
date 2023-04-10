@@ -4,13 +4,15 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class GameService {
+
   maos: any[][] = [];
   maoJogador: any[] = [];
   maoNpc: any[] = [];
   pilhaCompra: any[] = [];
-  pilhaDescarte: any[] = [];
+  pilhaDescarte: PilhaDescarte[] = [];
   cartasJogadas: any[] = [];
   vira: any = null;
+  isTurnoJogador: boolean = true;
 
   inicarJogo(numPlayers: number) {
     // criando deck
@@ -52,24 +54,15 @@ export class GameService {
 
   descartar(cartaIndex: number, isNpc: boolean) {
     let carta;
-    console.log(cartaIndex);
     if (isNpc) {
       carta = this.maoNpc[cartaIndex];
-      console.log(this.maoNpc);
       this.maoNpc.splice(cartaIndex, 1);
     } else {
       carta = this.maoJogador[cartaIndex];
       this.maoJogador.splice(cartaIndex, 1);
     }
-    console.log(carta);
-    this.pilhaDescarte.push(carta);
-  }
-
-  descartar2(cartaIndex: number, isNpc: boolean) {
-    let carta;
-    carta = this.maoNpc[cartaIndex];
-    this.maoNpc.splice(cartaIndex, 1);
-    this.pilhaDescarte.push(carta);
+    this.pilhaDescarte.push({carta, isNpc: isNpc});
+    this.isTurnoJogador = !this.isTurnoJogador;
   }
 
   comprar(playerIndex: number) {
@@ -89,4 +82,53 @@ export class GameService {
     // this.maoJogador[playerIndex].push(carta);
     this.maoJogador.push(carta);
   }
+
+  valorCartas(carta: Carta) {
+    switch (carta.values) {
+      case '4':
+        return 1;
+      case '5':
+        return 2;
+      case '6':
+        return 3;
+      case '7':
+        return 4;
+      case 'J':
+        return 5;
+      case 'Q':
+        return 6;
+      case 'K':
+        return 7;
+      case 'A':
+        return 8;
+      case '1':
+        return 9;
+      case '2':
+        return 10;
+      case '3':
+        return 11;
+      default:
+        throw new Error('deu ruim')
+    }
+  }
+
+  vencedorRound(){
+    const cartaNpc = this.pilhaDescarte.filter(c => c.isNpc);
+    const cartaJogador = this.pilhaDescarte.filter(c => !c.isNpc);
+
+    if (cartaNpc > cartaJogador) {
+
+    }
+  }
+
+}
+
+interface Carta {
+  suit: string;
+  values: string;
+}
+
+interface PilhaDescarte {
+  carta: Carta;
+  isNpc: boolean;
 }

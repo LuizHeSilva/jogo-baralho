@@ -7,10 +7,10 @@
           src="https://deckofcardsapi.com/static/img/{{carta.value}}{{carta.suit.sigla}}.png"
         />
 
-        <div class="button-1 passar-mouse" (click)="jogarCarta(carta)">
+        <!-- <div class="button-1 passar-mouse" (click)="jogarCarta(carta)">
           <div class="mostrar">Jogar</div>
-        </div>
-        <div class="button-2 passar-mouse" (click)="descartar(carta)">
+        </div> -->
+        <div class="button-2 passar-mouse" (click)="descartar(carta)" *ngIf="!gameService.isTurnoJogador">
           <div class="mostrar">Descartar</div>
         </div>
       </div>
