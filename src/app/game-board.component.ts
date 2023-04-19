@@ -16,8 +16,8 @@ export class GameBoardComponent implements OnInit {
 
   ngOnInit() {
     this.gameService.inicarJogo(2);
-    this.maoJogador = this.gameService.maoJogador;
-    this.maoNpc = this.gameService.maoNpc;
+    this.maoJogador = this.gameService.maoJogador.cartas;
+    this.maoNpc = this.gameService.maoNpc.cartas;
     this.pilhaDescarte = this.gameService.pilhaCompra;
     this.cartasJogadas = this.gameService.cartasJogadas;
     this.vira = this.gameService.vira;

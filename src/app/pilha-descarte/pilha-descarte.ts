@@ -8,14 +8,14 @@ import { GameService } from './../gameService';
 export class PilhaDescarteComponent {
   constructor(public gameService: GameService) {}
 
-  maoJogador: any[] = this.gameService.maoJogador;
+  maoJogador: any[] = this.gameService.maoJogador?.cartas;
   cartasJogadas: any[] = this.gameService.cartasJogadas;
   pilhaDescarte: any[] = this.gameService.pilhaDescarte;
 
   pegarCartaDescartada() {
     if (this.gameService.pilhaDescarte.length > 0) {
       this.gameService.pegarCartaDescartada(0);
-      this.maoJogador = this.gameService.maoJogador;
+      this.maoJogador = this.gameService.maoJogador?.cartas;
       this.pilhaDescarte = this.gameService.pilhaDescarte;
     }
   }

@@ -6,13 +6,18 @@ import { Injectable } from '@angular/core';
 export class GameService {
 
   maos: any[][] = [];
-  maoJogador: any[] = [];
-  maoNpc: any[] = [];
+  maoJogador: Jogador = this.inicializaJogador();
+  maoNpc: Jogador = this.inicializaJogador();
   pilhaCompra: any[] = [];
   pilhaDescarte: PilhaDescarte[] = [];
   cartasJogadas: any[] = [];
   vira: any = null;
   isTurnoJogador: boolean = true;
+  labelGanhadorRound: string = '';
+
+  inicializaJogador() {
+    return {cartas: [], pontos: 0};
+  }
 
   inicarJogo(numPlayers: number) {
     // criando deck
@@ -39,8 +44,8 @@ export class GameService {
       this.maos.push(deck.slice(i * 3, (i + 1) * 3));
     }
 
-    this.maoJogador = this.maos[0];
-    this.maoNpc = this.maos[1];
+    this.maoJogador.cartas = this.maos[0];
+    this.maoNpc.cartas = this.maos[1];
 
     this.vira = deck.pop();
     this.pilhaCompra = deck.slice(numPlayers * 3);
@@ -52,39 +57,63 @@ export class GameService {
     // this.maoJogador[playerIndex].splice(cartaIndex, 1);
   }
 
-  descartar(cartaIndex: number, isNpc: boolean) {
-    let carta;
-    if (isNpc) {
-      carta = this.maoNpc[cartaIndex];
-      this.maoNpc.splice(cartaIndex, 1);
-    } else {
-      carta = this.maoJogador[cartaIndex];
-      this.maoJogador.splice(cartaIndex, 1);
-    }
-    this.pilhaDescarte.push({carta, isNpc: isNpc});
-    this.isTurnoJogador = !this.isTurnoJogador;
-  }
-
   comprar(playerIndex: number) {
     const carta = this.pilhaCompra.pop();
     // this.maoJogador[playerIndex].push(carta);
-    this.maoJogador.push(carta);
+    this.maoJogador.cartas.push(carta);
   }
 
   pegarCartaJogada(playerIndex: number) {
     const carta = this.cartasJogadas.pop();
     // this.maoJogador[playerIndex].push(carta);
-    this.maoJogador.push(carta);
+    this.maoJogador.cartas.push(carta);
   }
 
   pegarCartaDescartada(playerIndex: number) {
-    const carta = this.pilhaDescarte.pop();
+    // const carta = this.pilhaDescarte.pop();
     // this.maoJogador[playerIndex].push(carta);
-    this.maoJogador.push(carta);
+    // this.maoJogador.cartas.push(carta);
   }
 
+  descartar(cartaIndex: number, isNpc: boolean) {
+    let carta;
+    if (isNpc) {
+      carta = this.maoNpc.cartas[cartaIndex];
+      this.maoNpc.cartas.splice(cartaIndex, 1);
+    } else {
+      carta = this.maoJogador.cartas[cartaIndex];
+      this.maoJogador.cartas.splice(cartaIndex, 1);
+    }
+
+    this.pilhaDescarte.push({carta, isNpc: isNpc});
+    this.isTurnoJogador = !this.isTurnoJogador;
+
+    if (this.pilhaDescarte.length == 2) {
+      this.vencedorRound();
+    }
+  }
+
+  vencedorRound(){
+    const cartaNpc = this.pilhaDescarte.filter(c => c.isNpc)[0];
+    const cartaJogador = this.pilhaDescarte.filter(c => !c.isNpc)[0];
+
+    if (this.valorCartas(cartaNpc.carta) > this.valorCartas(cartaJogador.carta)) {
+      this.labelGanhadorRound = 'NPC GANHOU ROUND';
+    } else if (this.valorCartas(cartaNpc.carta) < this.valorCartas(cartaJogador.carta)) {
+      this.labelGanhadorRound = 'JOGADOR GANHOU ROUND';
+    } else {
+      this.labelGanhadorRound = 'EMPATE';
+    }
+
+    while (this.pilhaDescarte.length > 0) {
+      this.pilhaDescarte.pop();
+    }
+  }
+
+
+
   valorCartas(carta: Carta) {
-    switch (carta.values) {
+    switch (carta.value) {
       case '4':
         return 1;
       case '5':
@@ -108,27 +137,32 @@ export class GameService {
       case '3':
         return 11;
       default:
-        throw new Error('deu ruim')
-    }
-  }
-
-  vencedorRound(){
-    const cartaNpc = this.pilhaDescarte.filter(c => c.isNpc);
-    const cartaJogador = this.pilhaDescarte.filter(c => !c.isNpc);
-
-    if (cartaNpc > cartaJogador) {
-
+        throw new Error('deu ruim');
     }
   }
 
 }
 
 interface Carta {
-  suit: string;
-  values: string;
+  suit: Suit;
+  value: string;
+}
+
+interface Suit {
+  nipe: string;
+  sigla: string;
 }
 
 interface PilhaDescarte {
   carta: Carta;
   isNpc: boolean;
+}
+
+interface Jogador {
+  cartas: Carta[];
+  pontos: number;
+}
+
+interface Round {
+
 }

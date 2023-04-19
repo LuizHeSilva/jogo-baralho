@@ -6,7 +6,7 @@ import { GameService } from './../gameService';
   templateUrl: './mao-jogador.html',
 })
 export class MaoJogadorComponent {
-  maoJogador: any[] = this.gameService.maoJogador;
+  maoJogador: any[] = this.gameService.maoJogador.cartas;
   cartasJogadas: any[] = this.gameService.cartasJogadas;
   pilhaDescarte: any[] = this.gameService.pilhaDescarte;
 
@@ -15,14 +15,14 @@ export class MaoJogadorComponent {
   jogarCarta(card: any) {
     const cardIndex = this.maoJogador.indexOf(card);
     this.gameService.jogarCarta(0, cardIndex);
-    this.maoJogador = this.gameService.maoJogador;
+    this.maoJogador = this.gameService.maoJogador.cartas;
     this.cartasJogadas = this.gameService.cartasJogadas;
   }
 
   descartar(card: any) {
     const cardIndex = this.maoJogador.indexOf(card);
     this.gameService.descartar(cardIndex, false);
-    this.maoJogador = this.gameService.maoJogador;
+    this.maoJogador = this.gameService.maoJogador.cartas;
     this.pilhaDescarte = this.gameService.pilhaDescarte;
   }
 }
