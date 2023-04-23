@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GameService } from './../gameService';
+import { EventEmitterService, GameService } from './../gameService';
 
 @Component({
   selector: 'mao-npc',
@@ -13,7 +13,9 @@ export class MaoNpcComponent implements OnInit {
   constructor(public gameService: GameService) {}
 
   ngOnInit(): void {
-    console.log('oi: ', this.gameService.maoNpc);
+    EventEmitterService.get('maoNpcCartas').subscribe(cartasMaoNpc => {
+      this.maoNpc = cartasMaoNpc;
+    });
   }
 
   jogarCarta(card: any) {
@@ -28,5 +30,19 @@ export class MaoNpcComponent implements OnInit {
     this.gameService.descartar(cardIndex, true);
     this.maoNpc = this.gameService.maoNpc.cartas;
     this.pilhaDescarte = this.gameService.pilhaDescarte;
+  }
+
+  mao1() {
+    if (this.gameService.round.npc === 1 || this.gameService.round.npc === 2) {
+      return 'circulo-preenchido';
+    }
+    return null;
+  }
+
+  mao2() {
+    if (this.gameService.round.npc === 2) {
+      return 'circulo-preenchido';
+    }
+    return null;
   }
 }

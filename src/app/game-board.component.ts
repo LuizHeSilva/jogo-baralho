@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { GameService } from './gameService';
+import { EventEmitterService, GameService } from './gameService';
+
 
 @Component({
   selector: 'game-board',
@@ -12,14 +13,25 @@ export class GameBoardComponent implements OnInit {
   cartasJogadas: any[] = [];
   vira: any = this.gameService.vira;
 
-  constructor(public gameService: GameService) {}
+  constructor(public gameService: GameService) {
+  }
 
   ngOnInit() {
     this.gameService.inicarJogo(2);
     this.maoJogador = this.gameService.maoJogador.cartas;
     this.maoNpc = this.gameService.maoNpc.cartas;
-    this.pilhaDescarte = this.gameService.pilhaCompra;
+    this.pilhaDescarte = this.gameService.pilhaDescarte;
     this.cartasJogadas = this.gameService.cartasJogadas;
     this.vira = this.gameService.vira;
+
+    EventEmitterService.get('reiniciarJogo').subscribe(() => {
+      this.gameService.inicarJogo(2);
+      this.maoJogador = this.gameService.maoJogador.cartas;
+      this.maoNpc = this.gameService.maoNpc.cartas;
+      this.pilhaDescarte = this.gameService.pilhaDescarte;
+      this.cartasJogadas = this.gameService.cartasJogadas;
+      this.vira = this.gameService.vira;
+    });
   }
+
 }

@@ -1,44 +1,48 @@
-<div class="table">
-  <div class="table-row">
-    <div class="seat"></div>
+<div class="placar">
+  <div class="placar__player">
+    <div class="nome">Jogador</div>
+    <div class="pontuacao">{{this.gameService.pontosJogador}}</div>
   </div>
-  <div class="table-row">
-    <div class="seat"></div>
-    <!-- MESA, TODAS AS CARTAS JOGADAS DENTRO -->
-    <div class="mesaa">
-      <div class="row alinhar-cima">
-        <h2>Suas Cartas</h2>
+  <div class="divisor"></div>
+  <div class="placar__player">
+    <div class="nome">NPC</div>
+    <div class="pontuacao">{{this.gameService.pontosNpc}}</div>
+  </div>
+</div>
+
+<div class="mesa">
+  <table>
+    <tr>
+      <td>
+        <h2 class="jogador">Suas Cartas</h2>
         <mao-jogador></mao-jogador>
-      </div>
-
-      <div class="row">
-        <div class="col">
-          <h2>Vira</h2>
-          <img
-            class="image"
-            src="https://deckofcardsapi.com/static/img/{{vira.value}}{{vira.suit.sigla}}.png"
-          />
-          <img
-            style="margin-top: -55%; transform: rotate(90deg)"
-            class="image"
-            src="https://namekusei.files.wordpress.com/2010/09/verso2.jpg"
-          />
+      </td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <div style="height: 100px !important;">
+          <img class="image" [src]="gameService.exibirCarta(vira.value, vira.suit.sigla)"/>
+          <img style="margin-top: 18%; margin-left: -25%; transform: rotate(90deg)"
+          class="image"
+          src="https://namekusei.files.wordpress.com/2010/09/verso2.jpg"/>
         </div>
-        {{ gameService.labelGanhadorRound }}
-        <div class="col">
-          <h4>Descarte</h4>
-          <pilha-descarte></pilha-descarte>
+        <br/>
+        <div style="height: 100px !important;">
+          <pilha-descarte class="alinhar-baixo"></pilha-descarte>
         </div>
-      </div>
-
-      <div class="row alinhar-baixo">
-        <h2>Cartas NPC</h2>
+      </td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td>
+        <h2 class="npc">Cartas NPC</h2>
         <mao-npc></mao-npc>
-      </div>
-    </div>
-    <div class="seat"></div>
-  </div>
-  <div class="table-row">
-    <div class="seat"></div>
-  </div>
+      </td>
+    </tr>
+  </table>
 </div>
