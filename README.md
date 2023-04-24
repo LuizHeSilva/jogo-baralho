@@ -1,7 +1,8 @@
 # Jogo Baralho
 
-O projeto foi criado apenas para ter melhor intendimento sobre a utilização do **Store/Service**, no inicio eram quatro componentes, o primeiro onde se localizava todos os outros, um para compra de cartas, outro para mostrar as cartas descartadas e outros para exibir as cartas que foram jogadas. No entando, no decorrer dos estudos, decidi altera o projeto para que se tornasse um jogo de cartas **TRUCO** .
+O projeto foi criado apenas para ter melhor entendimento sobre a utilização do **Store/Service**, no inicio eram quatro componentes: o primeiro onde se localizava todos os outros; um para compra de cartas; outro para mostrar as cartas descartadas; e outros para exibir as cartas que foram jogadas. No entando, no decorrer dos estudos, decidi alterar o projeto para que se tornasse um jogo de cartas **TRUCO** .
 
+https://icons8.com.br/icon/39700/rainha-de-paus
 
 ## Roteiro
 - [x] Distribui as cartas para o Jogador e "NPC" e uma carta para "vira";
@@ -16,3 +17,5 @@ O projeto foi criado apenas para ter melhor intendimento sobre a utilização do
  - [ ] Possibilitar a entrada de imagens para identificar os jogadores.
 
 [Visualização de como está o projeto](https://luizhesilva.github.io/jogo-baralho/)
+
+![enter image description here](https://img.icons8.com/clouds/256/ace-of-clubs.png)
