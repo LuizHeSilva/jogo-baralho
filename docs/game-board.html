@@ -1,0 +1,48 @@
+<div class="placar">
+  <div class="placar__player">
+    <div class="nome">Jogador</div>
+    <div class="pontuacao">{{this.gameService.pontosJogador}}</div>
+  </div>
+  <div class="divisor"></div>
+  <div class="placar__player">
+    <div class="nome">NPC</div>
+    <div class="pontuacao">{{this.gameService.pontosNpc}}</div>
+  </div>
+</div>
+
+<div class="mesa">
+  <table>
+    <tr>
+      <td>
+        <h2 class="jogador">Suas Cartas</h2>
+        <mao-jogador></mao-jogador>
+      </td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <div style="height: 100px !important;">
+          <img class="image" [src]="gameService.exibirCarta(vira.value, vira.suit.sigla)"/>
+          <img style="margin-top: 18%; margin-left: -25%; transform: rotate(90deg)"
+          class="image"
+          src="https://namekusei.files.wordpress.com/2010/09/verso2.jpg"/>
+        </div>
+        <br/>
+        <div style="height: 100px !important;">
+          <pilha-descarte class="alinhar-baixo"></pilha-descarte>
+        </div>
+      </td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td>
+        <h2 class="npc">Cartas NPC</h2>
+        <mao-npc></mao-npc>
+      </td>
+    </tr>
+  </table>
+</div>
