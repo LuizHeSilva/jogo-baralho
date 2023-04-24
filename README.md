@@ -15,3 +15,4 @@ O projeto foi criado apenas para ter melhor intendimento sobre a utilização do
  - [ ] Melhorar o CSS da mesa e adicionar cadeiras;
  - [ ] Possibilitar a entrada de imagens para identificar os jogadores.
 
+[Visualização de como está o projeto](https://luizhesilva.github.io/jogo-baralho/)
