@@ -2,8 +2,6 @@
 
 O projeto foi criado apenas para ter melhor entendimento sobre a utilização do **Store/Service**, no inicio eram quatro componentes: o primeiro onde se localizava todos os outros; um para compra de cartas; outro para mostrar as cartas descartadas; e outros para exibir as cartas que foram jogadas. No entando, no decorrer dos estudos, decidi alterar o projeto para que se tornasse um jogo de cartas **TRUCO** .
 
-https://icons8.com.br/icon/39700/rainha-de-paus
-
 ## Roteiro
 - [x] Distribui as cartas para o Jogador e "NPC" e uma carta para "vira";
 - [x] Pilha de descarte sem quebrar o layout;
